@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  mariadb_7:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_USER=chamilo
+      - MYSQL_PASSWORD=chamilo
+      - MYSQL_DATABASE=chamilo
+  chamilo_php7:
+    build:
+      context: ./chamilo-php7
+      args:
+        - CHAMILO_VERSION=1.11.8
+        - CHAMILO_TAR=chamilo-1.11.8-php7.tar.gz
+    links:
+      - mariadb_7
+    ports:
+      - "8080:80"
