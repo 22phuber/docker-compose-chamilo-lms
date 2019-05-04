@@ -1,4 +1,4 @@
-# chamilo-docker
+# Chamilo LMS docker-compose
 
 A simple docker-compose setup for [Chamilo](https://chamilo.org/) LMS.
 
