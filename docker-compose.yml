@@ -11,9 +11,11 @@ services:
     build:
       context: ./chamilo-php7
       args:
-        - CHAMILO_VERSION=1.11.8
-        - CHAMILO_TAR=chamilo-1.11.8-php7.tar.gz
+        - CHAMILO_VERSION=1.11.10
+        - CHAMILO_TAR=chamilo-1.11.10-php7.2.tar.gz
     links:
       - mariadb_7
     ports:
       - "8080:80"
+    extra_hosts:
+      - "docker.chamilo.net:127.0.0.1"
