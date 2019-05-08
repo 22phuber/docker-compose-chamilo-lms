@@ -46,8 +46,8 @@ Check for `.tar.gz` filenames here: https://github.com/chamilo/chamilo-lms/relea
 Example in `docker-compose.yml`:
 ```yaml
       args:
-        - CHAMILO_VERSION=1.11.8
-        - CHAMILO_TAR=chamilo-1.11.8-php7.tar.gz
+        - CHAMILO_VERSION=1.11.10
+        - CHAMILO_TAR=chamilo-1.11.10-php7.2.tar.gz
 ```
 
 The `args` settings in `docker-compose.yml` will override the `ARG` settings in the `Dockerfile`.
