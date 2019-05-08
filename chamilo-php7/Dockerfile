@@ -2,7 +2,7 @@
 
 FROM php:7-apache
 
-ARG CHAMILO_VERSION=1.11.8
+ARG CHAMILO_VERSION=1.11.10
 ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.tar.gz"
 
 # install packages
