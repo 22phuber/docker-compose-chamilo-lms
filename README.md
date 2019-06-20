@@ -51,7 +51,7 @@ Example in `docker-compose.yml`:
 ```
 
 The `args` settings in `docker-compose.yml` will override the `ARG` settings in the `Dockerfile`.
-If you remove the `args` in `docker-compose.yml` or `docker-compose-php5.yml`, the "fallback" values from the `Dockerfile` will be used.
+If you remove the `args` in `docker-compose.yml`, the "fallback" values from the `Dockerfile` will be used.
 
 ## PHP 7.x
 
