@@ -47,7 +47,7 @@ Example in `docker-compose.yml`:
 ```yaml
       args:
         - CHAMILO_VERSION=1.11.10
-        - CHAMILO_TAR=chamilo-1.11.10-php7.2.tar.gz
+        - CHAMILO_TAR=chamilo-1.11.10-php7.3.tar.gz
 ```
 
 The `args` settings in `docker-compose.yml` will override the `ARG` settings in the `Dockerfile`.
@@ -56,6 +56,7 @@ If you remove the `args` in `docker-compose.yml`, the "fallback" values from the
 ## PHP 7.x
 
 ##### Build:
+Build chamilo docker image
 ```bash
 docker-compose -f docker-compose.yml build
 ```
