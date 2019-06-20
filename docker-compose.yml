@@ -12,7 +12,7 @@ services:
       context: ./chamilo-php7
       args:
         - CHAMILO_VERSION=1.11.10
-        - CHAMILO_TAR=chamilo-1.11.10-php7.2.tar.gz
+        - CHAMILO_TAR=chamilo-1.11.10-php7.3.tar.gz
     links:
       - mariadb_7
     ports:
