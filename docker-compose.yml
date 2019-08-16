@@ -1,6 +1,6 @@
 version: "3.5"
 services:
-  mariadb_7:
+  mariadb:
     image: mariadb
     environment:
       - MYSQL_ROOT_PASSWORD=pass
@@ -14,7 +14,7 @@ services:
         - CHAMILO_VERSION=1.11.10
         - CHAMILO_TAR=chamilo-1.11.10-php7.3.tar.gz
     links:
-      - mariadb_7
+      - mariadb
     ports:
       - "8080:80"
     extra_hosts:
