@@ -70,7 +70,7 @@ docker-compose -f docker-compose.yml up
 The "Database Host" in step 4 of the mysql connections settings has to be the name of the docker image defined in the appropriate docker-compose yaml.
 
 ### PHP 7.x
-Database Host: `mariadb_7`
+Database Host: `mariadb`
 
 # Access Chamilo Website
 Access Chamilo URL with `/etc/hosts` entry:
