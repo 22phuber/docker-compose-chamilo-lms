@@ -6,8 +6,8 @@ ARG CHAMILO_VERSION=1.11.10
 ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.tar.gz"
 
 # install packages
-RUN apt update && apt install -y \
-    ssmtp \
+RUN apt update && apt install -yq --no-install-recommends \
+    msmtp \
     curl \
     git \
     wget \
