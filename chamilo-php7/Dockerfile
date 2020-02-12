@@ -1,6 +1,6 @@
 #
 
-FROM php:7-apache
+FROM php:7.3-apache
 
 ARG CHAMILO_VERSION=1.11.10
 ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.tar.gz"
@@ -49,7 +49,7 @@ WORKDIR /var/www
 ADD https://github.com/chamilo/chamilo-lms/releases/download/v${CHAMILO_VERSION}/${CHAMILO_TAR} /var/www/chamilo.tar.gz
 # unpack, delete archive, rename folders
 RUN tar -zxf chamilo.tar.gz \
-    && rm chamilo.tar.gz \ 
+    && rm chamilo.tar.gz \
     && mv chamilo* chamilo
 # delete unneeded files
 RUN find . -iname ".git" | xargs rm -rf \
