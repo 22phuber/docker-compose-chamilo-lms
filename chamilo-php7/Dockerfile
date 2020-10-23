@@ -1,9 +1,4 @@
-#
-
-FROM php:7.3-apache
-
-ARG CHAMILO_VERSION=1.11.10
-ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.tar.gz"
+FROM php:7.3-apache as php7_apache_base
 
 # install packages
 RUN apt update && apt install -yq --no-install-recommends \
@@ -45,15 +40,19 @@ RUN docker-php-ext-enable memcached apcu
 
 WORKDIR /var/www
 
+FROM php7_apache_base as php7_apache_chamilo_lms
+
+ARG CHAMILO_VERSION="1.11.12"
+ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.tar.gz"
+
 # download and install chamilo
-ADD https://github.com/chamilo/chamilo-lms/releases/download/v${CHAMILO_VERSION}/${CHAMILO_TAR} /var/www/chamilo.tar.gz
+ADD "https://github.com/chamilo/chamilo-lms/releases/download/v${CHAMILO_VERSION}/${CHAMILO_TAR}" "/var/www/chamilo.tar.gz"
 # unpack, delete archive, rename folders
 RUN tar -zxf chamilo.tar.gz \
     && rm chamilo.tar.gz \
     && mv chamilo* chamilo
 # delete unneeded files
-RUN find . -iname ".git" | xargs rm -rf \
-    && find . -iname ".git*" | xargs rm -rf \
+RUN find . -iname ".git*" -exec rm -rf {} + \
     && rm -rf chamilo/tests chamilo/.htac*
 
 WORKDIR /var/www/chamilo
@@ -70,7 +69,6 @@ RUN a2dissite 000-default; rm -rf /etc/apache2/sites-enabled/000-default.conf
 COPY files/security.conf /etc/apache2/conf-available/
 COPY files/chamilo.conf /etc/apache2/sites-available/chamilo.conf
 RUN a2ensite chamilo; a2enmod remoteip rewrite headers
-RUN service apache2 restart
 
 # configure /etc/hosts
 RUN echo "127.0.0.1 docker.chamilo.net" >> /etc/hosts

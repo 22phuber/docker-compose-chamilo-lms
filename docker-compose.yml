@@ -10,12 +10,15 @@ services:
   chamilo_php7:
     build:
       context: ./chamilo-php7
+      target: php7_apache_chamilo_lms
       args:
-        - CHAMILO_VERSION=1.11.10
-        - CHAMILO_TAR=chamilo-1.11.10-php7.3.tar.gz
+        - CHAMILO_VERSION=1.11.12
+        - CHAMILO_TAR=chamilo-1.11.12-php7.2.tar.gz
     links:
       - mariadb
     ports:
       - "8080:80"
     extra_hosts:
       - "docker.chamilo.net:127.0.0.1"
+    labels:
+      "project.id": "docker.compose.chamilo_lms"
