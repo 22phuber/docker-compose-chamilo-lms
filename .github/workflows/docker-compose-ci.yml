@@ -1,0 +1,20 @@
+name: Docker-compose CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and run docker-compose
+      run: docker-compose up -d
+    - name: Check if web interface is up
+      run: docker exec --workdir "/var/www/chamilo/" $(docker ps --filter "status=running" --filter "label=project.id=docker.compose.chamilo_lms" -q) bash -c "curl -I docker.chamilo.net -s --retry 10 --retry-connrefused"
