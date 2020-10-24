@@ -7,6 +7,9 @@ services:
       - MYSQL_USER=chamilo
       - MYSQL_PASSWORD=chamilo
       - MYSQL_DATABASE=chamilo
+    labels:
+      "project.id": "docker.compose.mariadb"
+      "project.github.url": "https://github.com/22phuber/docker-compose-chamilo-lms"
   chamilo_php7:
     build:
       context: ./chamilo-php7
@@ -22,3 +25,4 @@ services:
       - "docker.chamilo.net:127.0.0.1"
     labels:
       "project.id": "docker.compose.chamilo_lms"
+      "project.github.url": "https://github.com/22phuber/docker-compose-chamilo-lms"
