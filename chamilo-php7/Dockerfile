@@ -6,6 +6,7 @@ RUN apt update && apt install -yq --no-install-recommends \
     curl \
     git \
     wget \
+    parallel \
     libzip-dev \
     zlib1g-dev \
     libpng-dev \
@@ -43,7 +44,7 @@ WORKDIR /var/www
 FROM php7_apache_base as php7_apache_chamilo_lms
 
 ARG CHAMILO_VERSION="1.11.12"
-ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.tar.gz"
+ARG CHAMILO_TAR="chamilo-${CHAMILO_VERSION}-php7.2.tar.gz"
 
 # download and install chamilo
 ADD "https://github.com/chamilo/chamilo-lms/releases/download/v${CHAMILO_VERSION}/${CHAMILO_TAR}" "/var/www/chamilo.tar.gz"
@@ -57,12 +58,7 @@ RUN find . -iname ".git*" -exec rm -rf {} + \
 
 WORKDIR /var/www/chamilo
 
-RUN chown -R www-data:www-data \
-    app \
-    main/default_course_document/images \
-    main/lang \
-    vendor \
-    web
+RUN bash -c 'set -o pipefail; ls -d app main/default_course_document/images main/lang vendor web | parallel chown -R www-data:www-data "{}"'
 
 # Configure and start Apache
 RUN a2dissite 000-default; rm -rf /etc/apache2/sites-enabled/000-default.conf
