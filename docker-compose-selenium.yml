@@ -65,12 +65,12 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
-    # healthcheck:
-    #   test: ["CMD", "/opt/bin/check-grid.sh"]
-    #   interval: 15s
-    #   timeout: 30s
-    #   retries: 5
-    #   start_period: 40s
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh"]
+      interval: 15s
+      timeout: 30s
+      retries: 5
+      start_period: 40s
     networks:
       - selenium-grid
 
