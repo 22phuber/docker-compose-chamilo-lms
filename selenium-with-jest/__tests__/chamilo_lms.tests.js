@@ -1,29 +1,19 @@
 const { Builder, By, Key, until, Capabilities } = require("selenium-webdriver");
+import { findElementByTagName } from "../helpers/helpers";
 
 const grid_url = "http://localhost:4444/wd/hub";
-const chamilo_url = "http://host.docker.internal:8080/";
-
-const getElementByName = async (driver, name, timeout = 2000) => {
-  const el = await driver.wait(until.elementLocated(By.name(name)), timeout);
-  return await driver.wait(until.elementIsVisible(el), timeout);
-};
-
-const getElementByTagName = async (driver, name, timeout = 2000) => {
-  const el = await driver.wait(until.elementLocated(By.tagName(name)), timeout);
-  return el;
-};
+const chamilo_url = "http://chamilo_php7/";
 
 describe("description", () => {
-
   const chromeCapabilities = Capabilities.chrome();
-  chromeCapabilities.set('chromeOptions', {args: ['--headless']});
+  chromeCapabilities.set("chromeOptions", { args: ["--headless"] });
 
   let driver;
 
   beforeAll(async () => {
     driver = await new Builder()
       .usingServer(grid_url)
-      .forBrowser('chrome')
+      .forBrowser("chrome")
       .withCapabilities(chromeCapabilities)
       .build();
 
@@ -58,7 +48,9 @@ describe("description", () => {
     // const title = await getElementByTagName(driver, "title");
     // const titleText = await title.getText();
 
-    const title = await driver.findElement(By.tagName("title")).getAttribute("innerText");
+    const title = await (await findElementByTagName(driver, "title")).getAttribute(
+      "innerText"
+    );
     expect(title).toContain("Chamilo has not been installed");
   }, 3000);
 });
