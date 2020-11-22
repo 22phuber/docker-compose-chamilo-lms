@@ -27,5 +27,5 @@ jobs:
     - run: npm install
       working-directory: ./selenium-with-jest
     - name: Run tests
-      run: npm test
+      run: ./wait-for-selenium-grid.sh npm test
       working-directory: ./selenium-with-jest
