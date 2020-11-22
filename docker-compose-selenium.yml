@@ -39,21 +39,6 @@ services:
     networks:
       - selenium-grid
 
-  opera:
-    image: selenium/node-opera:4.0.0-alpha-7-prerelease-20201009
-    shm_size: 3g
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - START_XVFB=false
-    ports:
-      - "6902:5900"
-    networks:
-      - selenium-grid
-
   selenium-hub:
     image: selenium/hub:4.0.0-alpha-7-prerelease-20201009
     container_name: selenium-hub
