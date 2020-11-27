@@ -1,0 +1,63 @@
+version: "3"
+services:
+
+  mariadb:
+    networks:
+      - selenium-grid
+
+  chamilo_php7:
+    networks:
+      - selenium-grid
+
+  chrome:
+    image: selenium/node-chrome:4.0.0-alpha-7-prerelease-20201009
+    shm_size: 3g
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - START_XVFB=false
+    ports:
+      - "6900:5900"
+    networks:
+      - selenium-grid
+
+  firefox:
+    image: selenium/node-firefox:4.0.0-alpha-7-prerelease-20201009
+    shm_size: 3g
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - START_XVFB=false
+    ports:
+      - "6901:5900"
+    networks:
+      - selenium-grid
+
+  selenium-hub:
+    image: selenium/hub:4.0.0-alpha-7-prerelease-20201009
+    container_name: selenium-hub
+    environment:
+      - GRID_MAX_SESSION=16
+      - GRID_BROWSER_TIMEOUT=3000
+      - GRID_TIMEOUT=3000
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh"]
+      interval: 15s
+      timeout: 30s
+      retries: 5
+      start_period: 40s
+    networks:
+      - selenium-grid
+
+networks:
+  selenium-grid:

@@ -1,0 +1,19 @@
+{
+  "name": "selenium-with-jest",
+  "version": "1.0.0",
+  "description": "Basic Selenium tests for chamilo lms",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
+  }
+}

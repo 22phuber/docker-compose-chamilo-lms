@@ -12,9 +12,20 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
     steps:
     - uses: actions/checkout@v2
-    - name: Build and run docker-compose
-      run: docker-compose up -d
-    - name: Check if web interface is up
-      run: docker exec --workdir "/var/www/chamilo/" $(docker ps --filter "status=running" --filter "label=project.id=docker.compose.chamilo_lms" -q) bash -c "curl -I docker.chamilo.net -s --retry 10 --retry-connrefused"
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Build and run docker-compose with selenium grid
+      run: docker-compose -f docker-compose.yml -f docker-compose-selenium.yml up -d
+    - run: npm install
+      working-directory: ./selenium-with-jest
+    - name: Run tests
+      run: ./wait-for-selenium-grid.sh npm test
+      working-directory: ./selenium-with-jest
