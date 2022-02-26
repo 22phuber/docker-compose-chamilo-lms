@@ -82,7 +82,7 @@ describe("Firefox", () => {
     const wizardStep1H2Text = await (
       await getVisibleElementByXpath(firefoxDriver, wizardH2XPath)
     ).getText();
-    expect(wizardStep1H2Text).toContain("Step 1 - Installation Language");
+    expect(wizardStep1H2Text).toContain("Step 1 – Installation Language");
 
     // Step1: Next Button
     const step1NextButton = await getVisibleElementByName(firefoxDriver, "step1");
@@ -98,7 +98,7 @@ describe("Firefox", () => {
     const wizardStep2H2Text = await (
       await getVisibleElementByXpath(firefoxDriver, wizardH2XPath)
     ).getText();
-    expect(wizardStep2H2Text).toContain("Step 2 - Requirements");
+    expect(wizardStep2H2Text).toContain("Step 2 – Requirements");
 
     // Step2: Install Button
     const step2NextButton = await getVisibleElementByName(
@@ -127,7 +127,7 @@ describe("Firefox", () => {
     const wizardStep3H2Text = await (
       await getVisibleElementByXpath(firefoxDriver, wizardNewInstallH2XPath)
     ).getText();
-    expect(wizardStep3H2Text).toContain("Step 3 - Licence");
+    expect(wizardStep3H2Text).toContain("Step 3 – Licence");
 
     // Step3: Accept license checkbox
     const step3AcceptLicence = await getVisibleElementById(
@@ -159,7 +159,7 @@ describe("Firefox", () => {
     const wizardStep4H2Text = await (
       await getVisibleElementByXpath(firefoxDriver, wizardNewInstallH2XPath)
     ).getText();
-    expect(wizardStep4H2Text).toContain("Step 4 - MySQL database settings");
+    expect(wizardStep4H2Text).toContain("Step 4 – MySQL database settings");
 
     // Step4: Enter form field values
     const dbHostFormField = await findVisibleElementByCssSelector(
@@ -221,7 +221,7 @@ describe("Firefox", () => {
     const wizardStep5H2Text = await (
       await getVisibleElementByXpath(firefoxDriver, wizardNewInstallH2XPath)
     ).getText();
-    expect(wizardStep5H2Text).toContain("Step 5 - Config settings");
+    expect(wizardStep5H2Text).toContain("Step 5 – Config settings");
 
     // Step5: Enter form field values
     const passFormField = await findVisibleElementByCssSelector(
@@ -255,7 +255,7 @@ describe("Firefox", () => {
     const wizardStep6H2Text = await (
       await getVisibleElementByXpath(firefoxDriver, wizardNewInstallH3XPath)
     ).getText();
-    expect(wizardStep6H2Text).toContain("Step 6 - Last check before install");
+    expect(wizardStep6H2Text).toContain("Step 6 – Last check before install");
   }, 30000);
 });
 
@@ -324,7 +324,7 @@ describe("Chrome", () => {
     const wizardStep1H2Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardH2XPath)
     ).getText();
-    expect(wizardStep1H2Text).toContain("Step 1 - Installation Language");
+    expect(wizardStep1H2Text).toContain("Step 1 – Installation Language");
 
     // Step1: Next Button
     const step1NextButton = await getVisibleElementByName(chromeDriver, "step1");
@@ -340,7 +340,7 @@ describe("Chrome", () => {
     const wizardStep2H2Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardH2XPath)
     ).getText();
-    expect(wizardStep2H2Text).toContain("Step 2 - Requirements");
+    expect(wizardStep2H2Text).toContain("Step 2 – Requirements");
 
     // Step2: Install Button
     const step2NextButton = await getVisibleElementByName(
@@ -369,7 +369,7 @@ describe("Chrome", () => {
     const wizardStep3H2Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardNewInstallH2XPath)
     ).getText();
-    expect(wizardStep3H2Text).toContain("Step 3 - Licence");
+    expect(wizardStep3H2Text).toContain("Step 3 – Licence");
 
     // Step3: Accept license checkbox
     const step3AcceptLicence = await getVisibleElementById(
@@ -401,7 +401,7 @@ describe("Chrome", () => {
     const wizardStep4H2Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardNewInstallH2XPath)
     ).getText();
-    expect(wizardStep4H2Text).toContain("Step 4 - MySQL database settings");
+    expect(wizardStep4H2Text).toContain("Step 4 – MySQL database settings");
 
     // Step4: Enter form field values
     const dbHostFormField = await findVisibleElementByCssSelector(
@@ -463,7 +463,7 @@ describe("Chrome", () => {
     const wizardStep5H2Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardNewInstallH2XPath)
     ).getText();
-    expect(wizardStep5H2Text).toContain("Step 5 - Config settings");
+    expect(wizardStep5H2Text).toContain("Step 5 – Config settings");
 
     // Step5: Enter form field values
     const passFormField = await findVisibleElementByCssSelector(
@@ -497,7 +497,7 @@ describe("Chrome", () => {
     const wizardStep6H3Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardNewInstallH3XPath)
     ).getText();
-    expect(wizardStep6H3Text).toContain("Step 6 - Last check before install");
+    expect(wizardStep6H3Text).toContain("Step 6 – Last check before install");
 
     // Step6: Find and click install button
     const finalInstallButton = await findVisibleElementByCssSelector(
@@ -519,7 +519,7 @@ describe("Chrome", () => {
     const wizardStep7H3Text = await (
       await getVisibleElementByXpath(chromeDriver, wizardFinalInstallH3XPath)
     ).getText();
-    expect(wizardStep7H3Text).toContain("Step 7 - Installation process execution");
+    expect(wizardStep7H3Text).toContain("Step 7 – Installation process execution");
 
     // Step7: Portal button
     const portalLink = await findVisibleElementByCssSelector(
