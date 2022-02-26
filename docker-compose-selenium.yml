@@ -10,7 +10,7 @@ services:
       - selenium-grid
 
   chrome:
-    image: selenium/node-chrome:4.0.0-alpha-7-prerelease-20201009
+    image: selenium/node-chrome:4.1.2-20220208
     shm_size: 3g
     depends_on:
       - selenium-hub
@@ -25,7 +25,7 @@ services:
       - selenium-grid
 
   firefox:
-    image: selenium/node-firefox:4.0.0-alpha-7-prerelease-20201009
+    image: selenium/node-firefox:4.1.2-20220208
     shm_size: 3g
     depends_on:
       - selenium-hub
@@ -40,7 +40,7 @@ services:
       - selenium-grid
 
   selenium-hub:
-    image: selenium/hub:4.0.0-alpha-7-prerelease-20201009
+    image: selenium/hub:4.1.2-20220208
     container_name: selenium-hub
     environment:
       - GRID_MAX_SESSION=16

@@ -540,7 +540,7 @@ describe("Chrome", () => {
     // Portal Login: Navbar Link
     const navBarLink = await findVisibleElementByCssSelector(
       driver,
-      "a[href='"+ chamilo_url +"index.php'][title=Homepage]"
+      "a[href='" + chamilo_url + "index.php'][title=Homepage]"
     );
     const navBarLinkText = await navBarLink.getText();
     expect(navBarLinkText).toContain("Homepage");
@@ -575,7 +575,7 @@ describe("Chrome", () => {
     // Portal Administrator Page: Navbar Link
     const navBarAdministrationLink = await findVisibleElementByCssSelector(
       driver,
-      "a[href='"+ chamilo_url +"main/admin/'][title=Administration]"
+      "a[href='" + chamilo_url + "main/admin/'][title=Administration]"
     );
     const navBarAdministrationLinkText = await navBarAdministrationLink.getText();
     expect(navBarAdministrationLinkText).toContain("Administration");
