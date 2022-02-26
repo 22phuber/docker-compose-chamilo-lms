@@ -32,6 +32,9 @@ describe("Firefox", () => {
       .withCapabilities(firefoxCapabilities)
       .build();
 
+    await firefoxDriver.manage().setTimeouts({ implicit: 5000 });
+    await firefoxDriver.manage().window().maximize();
+
     // eslint-disable-next-line no-undef
     await firefoxDriver.get(chamilo_url);
   }, 10000);
@@ -273,6 +276,9 @@ describe("Chrome", () => {
       .forBrowser("chrome")
       .withCapabilities(chromeCapabilities)
       .build();
+
+    await chromeDriver.manage().setTimeouts({ implicit: 10000 });
+    await chromeDriver.manage().window().maximize();
 
     // eslint-disable-next-line no-undef
     await chromeDriver.get(chamilo_url);
