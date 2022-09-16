@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "selenium-webdriver": "^4.1.1"
+    "selenium-webdriver": "^4.3.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
