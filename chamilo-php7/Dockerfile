@@ -1,4 +1,4 @@
-FROM php:7.3-apache as php7_apache_base
+FROM php:7.4.28-apache as php7_apache_base
 
 # install packages
 RUN apt update && apt install -yq --no-install-recommends \
